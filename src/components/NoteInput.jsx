@@ -18,6 +18,7 @@ export default class NoteInput extends React.Component {
 
   onTitleChangeEventHandler(event) {
     const limitBody = 50
+    if(event.target.value.length > limitBody) return;
 
     this.setState(() => {
       return {
@@ -45,7 +46,7 @@ export default class NoteInput extends React.Component {
       <form onSubmit={this.onSubmitEventHandler}>
         <Heading size={'md'} color={'blue.300'}>Tambah Catatan</Heading>
         <Text color={'red.200'} float={'right'}>limit: {this.state.limit}</Text>
-        <Input variant={'flushed'} focusBorderColor="blue.200" required my={1} type="text" placeholder="Title" value={this.state.title} onChange={this.onTitleChangeEventHandler} maxLength="50"/>
+        <Input variant={'flushed'} focusBorderColor="blue.200" required my={1} type="text" placeholder="Title" value={this.state.title} onChange={this.onTitleChangeEventHandler}/>
         <Textarea resize={'none'} variant={'flushed'} focusBorderColor="blue.200" required my={2} placeholder="Description" value={this.state.body} onChange={this.onBodyChangeEventHandler} />
         
         <ModalFooter gap={3}>
